@@ -13,17 +13,17 @@ namespace Sample.ToDoList.Tests.Controllers
     [TestFixture]
     public class HomeControllerTest
     {
-        private Mock<UserService> _userService;
+       private Mock<IUserService> _userService;
         private HomeController _controller;
 
         [SetUp]
         public void Setup()
         {
-            _userService = new Mock<UserService>();
+            _userService = new Mock<IUserService>();
             _controller = new HomeController(_userService.Object);
         }
 
-        [TestMethod]
+        [Test]
         public void Index()
         {
             // Act
@@ -33,7 +33,7 @@ namespace Sample.ToDoList.Tests.Controllers
             result.Should().NotBeNull();
         }
 
-        [TestMethod]
+        [Test]
         public void Login()
         {
             // Arrange
@@ -45,6 +45,8 @@ namespace Sample.ToDoList.Tests.Controllers
 
             // Assert
             result.Should().NotBeNull();
+            (result.ViewBag.ErrorMessage as string).Should().NotBeNullOrWhiteSpace();
+            (result.ViewBag.ErrorMessage as string).Should().BeEquivalentTo("Invalid Credentials");
         }
     }
 }
