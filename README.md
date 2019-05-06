@@ -1,7 +1,7 @@
 ### Technical Overview
 ***
 
-Online Todo list application is created using asp.net mvc. Dotnet framework version 4.6.2 is used. Application code project is present in Sample.ToDoList project. <br>
+Online Todo list application is created using asp.net mvc. Dotnet framework version 4.6.2 is used. Application code is present in Sample.ToDoList project. <br>
 
 ### Architectural Pattern: -
 ***
