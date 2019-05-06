@@ -1,0 +1,36 @@
+﻿@model Sample.ToDoList.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h3>Login</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Username </label><br />
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Password</label><br />
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @if (@ViewBag.ErrorMessage != null)
+            {
+                <label> @ViewBag.ErrorMessage</label>
+            }
+        </div>
+        <div class="loginbtn">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+
+
